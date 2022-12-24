@@ -1,0 +1,54 @@
+name: CI
+on:
+  push:
+    branches:
+      - '**'
+  pull_request:
+    branches:
+      - '**'
+jobs:
+  backend-tests:
+    runs-on: ubuntu-latest
+
+    services:
+      db:
+        image: mysql:8.0.30
+        env:
+          MYSQL_ROOT_PASSWORD: root
+          MYSQL_DATABASE: docker_laravel_test
+          MYSQL_USER: docker
+          MYSQL_PASSWORD: docker
+        ports:
+          - 3306:3306
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Setup PHP
+      uses: shivammathur/setup-php@v2
+      with:
+        php-version: '8.1.9'
+        extensions: mbstring, intl
+        coverage: none
+
+    - name: Composer install
+      run: |
+        composer install --ignore-platform-reqs
+    - name: NPM Build
+      run: |
+        npm install
+        npm run build
+    - name: Copy env.testing
+      run: cp .env.testing .env
+    - name: Encryption Key generate
+      run: php artisan key:generate --env=testing
+    - name: Run Migrate
+      env:
+        DB_HOST: 127.0.0.1
+      run: php artisan migrate --env=testing
+    - name: Run PHPUnit
+      env:
+        DB_HOST: 127.0.0.1
+      run: vendor/bin/phpunit
+    - name: Execute phpstan
+      run: |
+        ./vendor/bin/phpstan analyse

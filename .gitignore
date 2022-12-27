@@ -18,4 +18,4 @@ yarn-error.log
 /.vscode
 /docker/db/data
 /docker/minio/data
-
+/storage/framework/cache

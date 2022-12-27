@@ -1,0 +1,35 @@
+#!/bin/bash
+
+COMMAND=$1
+
+case $COMMAND in
+  "up" )
+    docker-compose up -d ;;
+
+  "stop" )
+    docker-compose stop ;;
+
+  "build" )
+    docker-compose build --no-cache --force-rm ;;
+
+  "destroy" )
+    docker-compose down --rmi all --volumes --remove-orphans ;;
+
+  "phpunit" )
+    docker-compose exec web vendor/bin/phpunit ;;
+
+  "stan" )
+    docker-compose exec web vendor/bin/phpstan analyse --memory-limit=1G;;
+
+  "vitest" )
+    docker-compose exec web npm run test ;;
+
+  "ci" )
+    docker-compose exec web vendor/bin/phpstan analyse --memory-limit=1G
+    docker-compose exec web vendor/bin/phpunit
+    docker-compose exec web npm run test ;;
+
+  "exec" )
+    docker-compose exec ${@:2} ;;
+
+esac

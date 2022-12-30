@@ -21,10 +21,7 @@ use Inertia\Inertia;
 */
 //ログインページ
 Route::get('/', function () {
-    return Inertia::render('Auth/Login', [
-        'laravelVersion' => Application::VERSION,
-        'phpVersion' => PHP_VERSION,
-    ]);
+    return Inertia::render('Auth/Login');
 });
 
 //未ログインユーザー

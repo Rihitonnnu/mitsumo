@@ -3,7 +3,9 @@
         "baseUrl": ".",
         "paths": {
             "@/*": ["resources/js/*"]
-        }
+        },
+        "skipLibCheck": true,
+        "types": ["vitest/globals"]
     },
     "exclude": ["node_modules", "public"]
 }

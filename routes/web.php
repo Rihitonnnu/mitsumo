@@ -33,12 +33,12 @@ Route::middleware('auth')->group(function () {
     Route::get('facility', [FacilityController::class, 'index'])->name('facility.index');
 
     //設備の予約関連
-    Route::get('{facilityId}/reservation', [ReservationController::class, 'index'])->name('reservation.index');
-    Route::get('{facilityId}/reservation/{reservationId}', [ReservationController::class, 'show'])->name('reservation.show');
-    Route::get('{facilityId}/reservation/{reservationId}', [ReservationController::class, 'edit'])->name('reservation.edit');
-    Route::post('{facilityId}/reservation', [ReservationController::class, 'store'])->name('reservation.store');
-    Route::put('{facilityId}/reservation/{reservationId}', [ReservationController::class, 'update'])->name('reservation.update');
-    Route::post('{facilityId}/reservation/{reservationId}', [ReservationController::class, 'delete'])->name('reservation.delete');
+    Route::get('facility/{facilityId}/reservation', [ReservationController::class, 'index'])->name('reservation.index');
+    Route::get('facility/{facilityId}/reservation/{reservationId}', [ReservationController::class, 'show'])->name('reservation.show');
+    Route::get('facility/{facilityId}/reservation/{reservationId}', [ReservationController::class, 'edit'])->name('reservation.edit');
+    Route::post('facility/{facilityId}/reservation', [ReservationController::class, 'store'])->name('reservation.store');
+    Route::put('facility/{facilityId}/reservation/{reservationId}', [ReservationController::class, 'update'])->name('reservation.update');
+    Route::post('facility/{facilityId}/reservation/{reservationId}', [ReservationController::class, 'delete'])->name('reservation.delete');
 });
 
 //管理者のみ

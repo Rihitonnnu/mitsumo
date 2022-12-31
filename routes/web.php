@@ -4,21 +4,10 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ReservationController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\FacilityController;
-use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\AuthenticatedSessionController;
 use Inertia\Inertia;
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
-*/
 //ログインページ
 Route::get('/', function () {
     return Inertia::render('Auth/Login');
@@ -44,7 +33,7 @@ Route::middleware('auth')->group(function () {
     Route::get('facility', [FacilityController::class, 'index'])->name('facility.index');
 
     //設備の予約関連
-    Route::get('{facilityId}/reservation', [ReservationController::class, 'create'])->name('reservation.create');
+    Route::get('{facilityId}/reservation', [ReservationController::class, 'index'])->name('reservation.index');
     Route::get('{facilityId}/reservation/{reservationId}', [ReservationController::class, 'show'])->name('reservation.show');
     Route::get('{facilityId}/reservation/{reservationId}', [ReservationController::class, 'edit'])->name('reservation.edit');
     Route::post('{facilityId}/reservation', [ReservationController::class, 'store'])->name('reservation.store');

@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
 
 class FacilitySeeder extends Seeder
 {
@@ -13,6 +14,13 @@ class FacilitySeeder extends Seeder
      */
     public function run()
     {
-        \App\Models\Facility::factory(5)->create();
+        DB::table('facilities')->insert([
+            [
+                'name' => 'ドライブシミュレータ',
+            ],
+            [
+                'name' => 'PC(GTX-3080)',
+            ],
+        ]);
     }
 }

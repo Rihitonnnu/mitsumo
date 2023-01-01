@@ -18,7 +18,7 @@ export default function Index(props) {
     return (
         <ChakraProvider>
             <AuthenticatedLayout auth={props.auth} errors={props.errors}>
-                <Head title="Dashboard" />
+                <Head title="設備一覧" />
 
                 {/* ログインのセッションがある状態かつisVisibleがtrueの時にフラッシュメッセージを表示する */}
                 {props.status != null && isVisible == true ? (

@@ -22,6 +22,20 @@ class ReservationSeeder extends Seeder
                 'endtime' => '2022-01-01 14:00:00',
                 'perpose' => '実験のため',
             ],
+            [
+                'user_id' => 2,
+                'facility_id' => 1,
+                'starttime' => '2023-01-01 13:00:00',
+                'endtime' => '2022-01-01 14:00:00',
+                'perpose' => '実験のため',
+            ],
+            [
+                'user_id' => 1,
+                'facility_id' => 1,
+                'starttime' => '2023-01-02 13:00:00',
+                'endtime' => '2022-01-01 14:00:00',
+                'perpose' => '実験のため',
+            ],
         ]);
     }
 }

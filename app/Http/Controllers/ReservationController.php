@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Facility;
 use App\Models\Reservation;
 use App\Search\ReservationSearch;
+use Illuminate\Http\Request;
 use Inertia\Inertia;
 use Search\QueryParser;
 
@@ -15,7 +16,7 @@ class ReservationController extends Controller
      * @param int $id
      * @return \Inertia\Response
      */
-    public function index(int $id)
+    public function index(int $id, Request $request)
     {
         $query = QueryParser::parse(new ReservationSearch());
         $reservations = Reservation::search(new ReservationSearch(), $query)
@@ -25,6 +26,8 @@ class ReservationController extends Controller
         return Inertia::render('Reservation/Index', [
             'reservations' => $reservations,
             'facility' => Facility::find($id),
+            'subscriber' => $request->subscriber ?? null,
+            'start_time' => $request->start_time ?? null,
         ]);
     }
 }

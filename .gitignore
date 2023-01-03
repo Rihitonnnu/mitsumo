@@ -19,3 +19,4 @@ yarn-error.log
 /docker/db/data
 /docker/minio/data
 /storage/framework/cache
+/storage/debugbar

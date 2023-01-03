@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Models\Facility;
 use App\Models\Reservation;
+use App\Search\ReservationSearch;
 use Inertia\Inertia;
+use Search\QueryParser;
 
 class ReservationController extends Controller
 {
@@ -15,9 +17,14 @@ class ReservationController extends Controller
      */
     public function index(int $id)
     {
-        return Inertia::render('Reservation/Index',[
-            'reservations'=>Reservation::where('facility_id',$id)->with(['user'])->get(),
-            'facility_name'=>Facility::find($id)->name,
+        $query = QueryParser::parse(new ReservationSearch());
+        $reservations = Reservation::search(new ReservationSearch(), $query)
+            ->where('facility_id', $id)
+            ->with('user')
+            ->get();
+        return Inertia::render('Reservation/Index', [
+            'reservations' => $reservations,
+            'facility' => Facility::find($id),
         ]);
     }
 }

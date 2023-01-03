@@ -8,9 +8,9 @@ import { useForm } from "@inertiajs/inertia-react";
 import { Input } from "@chakra-ui/react";
 
 export default function Index(props) {
-    const { data,setData, get } = useForm({
-        subscriber: "",
-        start_time:"",
+    const { data, setData, get } = useForm({
+        subscriber: props.subscriber,
+        start_time: props.start_time,
     });
 
     const onSearch = (e) => {
@@ -51,6 +51,9 @@ export default function Index(props) {
                                                 <TextInput
                                                     name="subscriber"
                                                     id="subscriber"
+                                                    value={
+                                                        data.subscriber
+                                                    }
                                                     handleChange={(e) =>
                                                         setData(
                                                             "subscriber",
@@ -68,6 +71,9 @@ export default function Index(props) {
                                                     type="datetime-local"
                                                     id="start_time"
                                                     name="start_time"
+                                                    value={
+                                                        data.start_time
+                                                    }
                                                     onChange={(e) =>
                                                         setData(
                                                             "start_time",

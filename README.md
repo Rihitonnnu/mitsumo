@@ -1,4 +1,4 @@
-# mitsumo
+# mitsumo　(研究室の設備予約システム)
 
 ## クローン
 ```
@@ -59,22 +59,6 @@ $ php artisan config:clear
 ### 認証キー作成
 ```
 $ php artisan key:generate --env=testing
-```
-### dbコンテナに入る
-```
-$ docker compose exec db bash
-```
-### MySQLにログイン(pwはroot)
-```
-$ mysql -u root -p
-```
-### テスト用のデータベース作成
-```
-create database test_db;
-```
-### DBの権限設定
-```
-GRANT ALL PRIVILEGES ON `test_db`.* TO `user`@`%`;
 ```
 ### マイグレート
 ```

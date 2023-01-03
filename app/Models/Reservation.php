@@ -6,6 +6,12 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
+/**
+ * Class Reservation
+ * 
+ * @method static \Illuminate\Database\Eloquent\Builder search(Searchable $search, $query = null)
+ */
+
 class Reservation extends Model
 {
     use HasFactory;

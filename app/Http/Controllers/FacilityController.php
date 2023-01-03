@@ -10,7 +10,7 @@ class FacilityController extends Controller
     public function index()
     {
         return Inertia::render('Facility/Index', [
-            'facilities'=>Facility::all(),
+            'facilities' => Facility::all(),
             'status' => session('success'),
         ]);
     }

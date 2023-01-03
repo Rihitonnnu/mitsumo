@@ -11,8 +11,8 @@ class FacilityControllerTest extends TestCase
     protected function setUp(): void
     {
         parent::setUp();
-        $this->normal = User::factory()->create(['is_admin'=>false]);
-        $this->admin=User::factory()->create(['is_admin'=>true]);
+        $this->normal = User::factory()->create(['is_admin' => false]);
+        $this->admin = User::factory()->create(['is_admin' => true]);
     }
 
     /**
@@ -22,7 +22,7 @@ class FacilityControllerTest extends TestCase
     public function 一覧画面表示()
     {
         //未ログイン時ログイン画面へリダイレクト
-        $response=$this->get(route('facility.index'));
+        $response = $this->get(route('facility.index'));
         $response->assertRedirect(route('login'));
 
         //ログイン時は表示可能

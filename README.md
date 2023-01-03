@@ -60,22 +60,6 @@ $ php artisan config:clear
 ```
 $ php artisan key:generate --env=testing
 ```
-### dbコンテナに入る
-```
-$ docker compose exec db bash
-```
-### MySQLにログイン(pwはroot)
-```
-$ mysql -u root -p
-```
-### テスト用のデータベース作成
-```
-create database test_db;
-```
-### DBの権限設定
-```
-GRANT ALL PRIVILEGES ON `test_db`.* TO `user`@`%`;
-```
 ### マイグレート
 ```
 php artisan migrate --env=testing
